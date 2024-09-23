@@ -7,6 +7,12 @@ export enum PerformanceClass {
   EXECUTION = 'execution',
 }
 
+export function getPerformanceClasses(): PerformanceClass[] {
+  return Object.values(PerformanceClass).filter(
+    (value) => typeof value === 'string'
+  ) as PerformanceClass[];
+}
+
 export interface CommandFlowConfig {
   performanceClass: PerformanceClass
   shouldSaveLogs: boolean

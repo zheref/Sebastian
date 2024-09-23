@@ -1,18 +1,48 @@
-import { Avatar, BaseStyles, Box, Button, Heading, NavList, Octicon, SplitPageLayout, Text, ThemeProvider, Header, CircleOcticon } from '@primer/react';
-import { HeartFillIcon, InboxIcon, CalendarIcon, CloudIcon} from '@primer/octicons-react';
+import { Avatar, BaseStyles, Box, Button, Heading, NavList, Octicon, SplitPageLayout, Text, ThemeProvider, Header, CircleOcticon, ActionMenu, ActionList } from '@primer/react';
+import { HeartFillIcon, InboxIcon, CalendarIcon, CloudIcon, PlayIcon} from '@primer/octicons-react';
 import { useParams } from 'react-router-dom';
 import { CommandScreen, getOcticonFor, getTitleFor } from '../model/CommandScreen';
 import React from 'react';
+import { getPerformanceClasses } from '../commands/CommandFlow';
 
 
 
 const CommandHeader = ({ title, screen }: { title: string, screen: CommandScreen }) => {
   return (
     <Header>
-      <Header.Item>
+      <Header.Item full>
         <Heading sx={{ fontSize: 3, fontWeight: 'normal' }}>{title}</Heading>
       </Header.Item>
+      <Header.Item>
+        <SelectionMenu />
+      </Header.Item>
+      <Header.Item>
+        <Button variant="primary">
+          <Octicon icon={PlayIcon} />
+        </Button>
+      </Header.Item>
     </Header>
+  )
+}
+
+const SelectionMenu = () => {
+  const options = getPerformanceClasses()
+  const [selectedIndex, setSelectedIndex] = React.useState(0)
+  const selectedType = options[selectedIndex]
+
+  return (
+    <ActionMenu>
+      <ActionMenu.Button>{selectedType}</ActionMenu.Button>
+      <ActionMenu.Overlay width="medium">
+        <ActionList>
+          {options.map((c, index) =>
+            <ActionList.Item onSelect={() => setSelectedIndex(index)}>
+              {c}
+            </ActionList.Item>
+          )}
+        </ActionList>
+      </ActionMenu.Overlay>
+    </ActionMenu>
   )
 }
 
@@ -26,17 +56,6 @@ export default function CommandView() {
     <Box sx={{ padding: 0 }}>
       <CommandHeader title={getTitleFor(initialScreen as CommandScreen)} screen={initialScreen as CommandScreen} />
       <Box sx={{ padding: 16 }}>
-      <Heading
-        as="h2"
-        sx={{
-          fontSize: 4,
-          fontWeight: 'normal',
-          color: 'danger.fg',
-          mb: 2,
-        }}
-      >
-        {initialScreen}
-      </Heading>
       <Box
         sx={{
           border: '1px solid',
@@ -55,6 +74,7 @@ export default function CommandView() {
             gap: 1,
           }}
         >
+
           <Text
             sx={{
               fontSize: 1,
