@@ -1,10 +1,22 @@
 import { MemoryRouter as Router, Routes, Route, Link, useParams, useNavigate, MemoryRouter } from 'react-router-dom';
 import icon from '../../assets/icon.svg';
 import './App.css';
-import { BaseStyles, Box, Button, Heading, NavList, Octicon, SplitPageLayout, Text, ThemeProvider } from '@primer/react';
+import { BaseStyles, Box, Button, Heading, NavList, Octicon, SplitPageLayout, Text, theme, ThemeProvider } from '@primer/react';
 import CommandView from './CommandView';
 import { CommandScreen, getAllScreens, getOcticonFor, getTitleFor } from '../model/CommandScreen';
 import { useCallback, useState } from 'react';
+import deepmerge from 'deepmerge'
+
+const customTheme = deepmerge(theme, {
+  fonts: {
+    normal: 'Montserrat, Open Sans, SF Compact, Skia, Helvetica Neue, Helvetica, Arial, sans-serif',
+  },
+  fontWeights: {
+    normal: 400,
+    medium: 500,
+    bold: 700,
+  },
+})
 
 function Spacer() {
   return <Box flexGrow={1} />;
@@ -59,7 +71,7 @@ function ContentView() {
 
 export default function App() {
   return (
-    <ThemeProvider>
+    <ThemeProvider theme={customTheme}>
       <BaseStyles className="flex-1" display="flex" flex={1} flexDirection={'column'} sx={{ flex: '1', display: 'flex', flexDirection: 'column' }}>
         <MemoryRouter>
           <ContentView />

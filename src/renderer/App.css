@@ -12,7 +12,8 @@ body {
     #fbfbfb 51.77%,
     #747474 129.35%
   );
-  font-family: sans-serif;
+  font-family: 'SF Pro Text', 'SF Pro Icons', 'Helvetica Neue', 'Helvetica',
+    'Arial', sans-serif;
   overflow-y: hidden;
   display: flex;
   justify-content: center;

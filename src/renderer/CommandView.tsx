@@ -9,37 +9,10 @@ import React from 'react';
 const CommandHeader = ({ title, screen }: { title: string, screen: CommandScreen }) => {
   return (
     <Header>
-    <Header.Item>
-      <Header.Link
-        href="#"
-        sx={{
-          fontSize: 2,
-        }}
-      >
-        <Octicon
-          icon={getOcticonFor(screen)}
-          size={32}
-          sx={{
-            mr: 2,
-          }}
-        />
-        <span>{title}</span>
-      </Header.Link>
-    </Header.Item>
-    <Header.Item full>Menu</Header.Item>
-    <Header.Item
-      sx={{
-        mr: 0,
-      }}
-    >
-      <Avatar
-        src="https://github.com/octocat.png"
-        size={20}
-        square
-        alt="@octocat"
-      />
-    </Header.Item>
-  </Header>
+      <Header.Item>
+        <Heading sx={{ fontSize: 3, fontWeight: 'normal' }}>{title}</Heading>
+      </Header.Item>
+    </Header>
   )
 }
 
