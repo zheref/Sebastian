@@ -59,7 +59,7 @@ export default function CommandView() {
       <Box
         sx={{
           border: '1px solid',
-          borderColor: 'danger.emphasis',
+          borderColor: 'lightgray',
           borderRadius: 2,
           p: 3,
           display: 'flex',
@@ -69,32 +69,38 @@ export default function CommandView() {
         }}
       >
         <Box
+          display="flex"
           sx={{
-            display: 'grid',
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'space-around',
             gap: 1,
           }}
         >
-
           <Text
+            flex={1}
             sx={{
               fontSize: 1,
               fontWeight: 'bold',
-              color: 'danger.fg',
+              color: 'fg.muted',
+              flex: 1
             }}
           >
-            Delete account
+            Ready.
           </Text>
           <Text
+            fontFamily="Andale Mono"
+            flex={1}
             sx={{
-              fontSize: 1,
+              fontSize: "12px",
               color: 'fg.muted',
+              flex: 1,
+              width: '100%'
             }}
           >
-            Are you sure you don&apos;t want to just downgrade your account to a
-            free account? We won&apos;t charge your credit card anymore.
+            Some text
           </Text>
         </Box>
-        <Button variant="danger">Delete account</Button>
       </Box>
       </Box>
 

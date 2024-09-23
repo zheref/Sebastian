@@ -42,8 +42,8 @@ function ContentView() {
   }, [navigate]);
 
   return (
-    <SplitPageLayout sx={{ flexGrow: 1, flex: 1, display: 'flex', padding: 0 }}>
-    <SplitPageLayout.Pane position="start">
+    <SplitPageLayout sx={{ flexGrow: 1, flex: 1, display: 'flex', padding: 0, width: '100%' }}>
+    <SplitPageLayout.Pane position="start" resizable>
       <>
       <Heading>Sebastian</Heading>
       <NavList aria-label="Main navigation">
@@ -57,7 +57,7 @@ function ContentView() {
       <Spacer />
       </>
     </SplitPageLayout.Pane>
-    <SplitPageLayout.Content padding='none'>
+    <SplitPageLayout.Content padding='none' width='large' sx={{ width: '100%', flex: '1' }}>
       <>
         <Routes>
           <Route path="/" element={<CommandView />} />
