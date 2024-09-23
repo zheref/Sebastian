@@ -56,39 +56,7 @@ export default function CommandView() {
     <Box sx={{ padding: 0 }}>
       <CommandHeader title={getTitleFor(initialScreen as CommandScreen)} screen={initialScreen as CommandScreen} />
       <Box sx={{ padding: 16 }}>
-      <Box
-        sx={{
-          border: '1px solid',
-          borderColor: 'lightgray',
-          borderRadius: 2,
-          p: 3,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          gap: 3,
-        }}
-      >
-        <Box
-          display="flex"
-          sx={{
-            display: 'flex',
-            flexDirection: 'row',
-            justifyContent: 'space-around',
-            gap: 1,
-          }}
-        >
-          <Text
-            flex={1}
-            sx={{
-              fontSize: 1,
-              fontWeight: 'bold',
-              color: 'fg.muted',
-              flex: 1
-            }}
-          >
-            Ready.
-          </Text>
-          <Text
+        <Text
             fontFamily="Andale Mono"
             flex={1}
             sx={{
@@ -98,12 +66,9 @@ export default function CommandView() {
               width: '100%'
             }}
           >
-            Some text
-          </Text>
-        </Box>
+            Ready.
+        </Text>
       </Box>
-      </Box>
-
     </Box>
   )
 }

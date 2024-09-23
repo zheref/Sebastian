@@ -42,7 +42,7 @@ function ContentView() {
   }, [navigate]);
 
   return (
-    <SplitPageLayout sx={{ flexGrow: 1, flex: 1, display: 'flex', padding: 0, width: '100%' }}>
+    <SplitPageLayout sx={{ flexGrow: 1, flex: 1, display: 'flex', padding: 0, width: '100%', '> *': { width: '100%' } }}>
     <SplitPageLayout.Pane position="start" resizable>
       <>
       <Heading>Sebastian</Heading>
