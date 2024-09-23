@@ -1,6 +1,43 @@
-import { BaseStyles, Box, Button, Heading, NavList, SplitPageLayout, Text, ThemeProvider } from '@primer/react';
+import { Avatar, BaseStyles, Box, Button, Heading, NavList, Octicon, SplitPageLayout, Text, ThemeProvider, Header, CircleOcticon } from '@primer/react';
 import { useParams } from 'react-router-dom';
-import { CommandScreen } from '../model/CommandScreen';
+import { CommandScreen, getTitleFor } from '../model/CommandScreen';
+
+const CommandHeader = ({ title }: { title: string }) => {
+  return (
+    <Header>
+    <Header.Item>
+      <Header.Link
+        href="#"
+        sx={{
+          fontSize: 2,
+        }}
+      >
+        {/* <Octicon
+          icon={CircleOcticon}
+          size={32}
+          sx={{
+            mr: 2,
+          }}
+        /> */}
+        <span>{title}</span>
+      </Header.Link>
+    </Header.Item>
+    <Header.Item full>Menu</Header.Item>
+    <Header.Item
+      sx={{
+        mr: 0,
+      }}
+    >
+      <Avatar
+        src="https://github.com/octocat.png"
+        size={20}
+        square
+        alt="@octocat"
+      />
+    </Header.Item>
+  </Header>
+  )
+}
 
 export default function CommandView() {
   const params = useParams();
@@ -10,6 +47,7 @@ export default function CommandView() {
 
   return (
     <>
+      <CommandHeader title={getTitleFor(initialScreen as CommandScreen)} />
       <Heading
         as="h2"
         sx={{
