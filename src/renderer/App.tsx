@@ -60,10 +60,15 @@ function CommandView() {
   )
 }
 
+function Spacer() {
+  return <Box flexGrow={1} />;
+}
+
 function ContentView() {
   return (
-    <SplitPageLayout>
+    <SplitPageLayout sx={{ flexGrow: 1, flex: 1, display: 'flex' }}>
     <SplitPageLayout.Pane position="start">
+      <>
       <NavList aria-label="Main navigation">
         <NavList.Item href="#">Profile</NavList.Item>
         <NavList.Item href="#" aria-current="page">
@@ -72,6 +77,8 @@ function ContentView() {
         <NavList.Item href="#">Emails</NavList.Item>
         <NavList.Item href="#">Notifications</NavList.Item>
       </NavList>
+      <Spacer />
+      </>
     </SplitPageLayout.Pane>
     <SplitPageLayout.Content>
       <Router>
@@ -87,7 +94,7 @@ function ContentView() {
 export default function App() {
   return (
     <ThemeProvider>
-      <BaseStyles>
+      <BaseStyles className="flex-1" display="flex" flex={1} flexDirection={'column'} sx={{ flex: '1', display: 'flex', flexDirection: 'column' }}>
         <ContentView />
       </BaseStyles>
     </ThemeProvider>

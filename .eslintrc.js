@@ -14,6 +14,10 @@ module.exports = {
     'no-unused-vars': 'off',
     '@typescript-eslint/no-unused-vars': 'error',
     semi: 'off',
+    'no-tabs': 'off',
+    'indent': 'off',
+    'react/jsx-indent': 'off',
+    'react/jsx-indent-props': 'off',
   },
   "prettier/prettier": [
     "error",

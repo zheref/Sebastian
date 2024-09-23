@@ -8,15 +8,21 @@ body {
   height: 100vh;
   background: linear-gradient(
     200.96deg,
-    #fedc2a -29.09%,
-    #dd5789 51.77%,
-    #7a2c9e 129.35%
+    #e4e4e4 -29.09%,
+    #fbfbfb 51.77%,
+    #747474 129.35%
   );
   font-family: sans-serif;
   overflow-y: hidden;
   display: flex;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
 
 button {
@@ -36,6 +42,7 @@ button {
 button:hover {
   transform: scale(1.05);
   opacity: 1;
+  cursor: default;
 }
 
 li {
@@ -47,16 +54,22 @@ a {
   height: fit-content;
   width: fit-content;
   margin: 10px;
+  cursor: default;
 }
 
 a:hover {
   opacity: 1;
   text-decoration: none;
+  cursor: default;
 }
 
-.Hello {
+.ContentView {
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 20px 0;
+}
+
+.flex-1 {
+  flex: 1 !important;
 }
