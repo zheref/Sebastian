@@ -1,9 +1,9 @@
 import { MemoryRouter as Router, Routes, Route, Link, useParams, useNavigate, MemoryRouter } from 'react-router-dom';
 import icon from '../../assets/icon.svg';
 import './App.css';
-import { BaseStyles, Box, Button, Heading, NavList, SplitPageLayout, Text, ThemeProvider } from '@primer/react';
+import { BaseStyles, Box, Button, Heading, NavList, Octicon, SplitPageLayout, Text, ThemeProvider } from '@primer/react';
 import CommandView from './CommandView';
-import { CommandScreen, getAllScreens, getTitleFor } from '../model/CommandScreen';
+import { CommandScreen, getAllScreens, getOcticonFor, getTitleFor } from '../model/CommandScreen';
 import { useCallback, useState } from 'react';
 
 function Spacer() {
@@ -30,20 +30,22 @@ function ContentView() {
   }, [navigate]);
 
   return (
-    <SplitPageLayout sx={{ flexGrow: 1, flex: 1, display: 'flex' }}>
+    <SplitPageLayout sx={{ flexGrow: 1, flex: 1, display: 'flex', padding: 0 }}>
     <SplitPageLayout.Pane position="start">
       <>
+      <Heading>Sebastian</Heading>
       <NavList aria-label="Main navigation">
         {getAllScreens().map((screen) => (
-          <NavList.Item key={screen} aria-current={selectedScreen === screen ? 'page' : undefined} onClick={() => userDidTapScreen(screen)}>
-            {getTitleFor(screen)}
+          <NavList.Item sx={{ padding: 0 }} key={screen} aria-current={selectedScreen === screen ? 'page' : undefined} onClick={() => userDidTapScreen(screen)}>
+            <Octicon icon={getOcticonFor(screen)} sx={{ mr: 2 }} />
+            <Text>{getTitleFor(screen)}</Text>
           </NavList.Item>
         ))}
       </NavList>
       <Spacer />
       </>
     </SplitPageLayout.Pane>
-    <SplitPageLayout.Content>
+    <SplitPageLayout.Content padding='none'>
       <>
         <Routes>
           <Route path="/" element={<CommandView />} />

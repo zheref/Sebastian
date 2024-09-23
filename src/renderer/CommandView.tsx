@@ -1,8 +1,12 @@
 import { Avatar, BaseStyles, Box, Button, Heading, NavList, Octicon, SplitPageLayout, Text, ThemeProvider, Header, CircleOcticon } from '@primer/react';
+import { HeartFillIcon, InboxIcon, CalendarIcon, CloudIcon} from '@primer/octicons-react';
 import { useParams } from 'react-router-dom';
-import { CommandScreen, getTitleFor } from '../model/CommandScreen';
+import { CommandScreen, getOcticonFor, getTitleFor } from '../model/CommandScreen';
+import React from 'react';
 
-const CommandHeader = ({ title }: { title: string }) => {
+
+
+const CommandHeader = ({ title, screen }: { title: string, screen: CommandScreen }) => {
   return (
     <Header>
     <Header.Item>
@@ -12,13 +16,13 @@ const CommandHeader = ({ title }: { title: string }) => {
           fontSize: 2,
         }}
       >
-        {/* <Octicon
-          icon={CircleOcticon}
+        <Octicon
+          icon={getOcticonFor(screen)}
           size={32}
           sx={{
             mr: 2,
           }}
-        /> */}
+        />
         <span>{title}</span>
       </Header.Link>
     </Header.Item>
@@ -46,8 +50,9 @@ export default function CommandView() {
   const initialScreen = params.screen ?? CommandScreen.ClassifyGmail;
 
   return (
-    <>
-      <CommandHeader title={getTitleFor(initialScreen as CommandScreen)} />
+    <Box sx={{ padding: 0 }}>
+      <CommandHeader title={getTitleFor(initialScreen as CommandScreen)} screen={initialScreen as CommandScreen} />
+      <Box sx={{ padding: 16 }}>
       <Heading
         as="h2"
         sx={{
@@ -98,6 +103,8 @@ export default function CommandView() {
         </Box>
         <Button variant="danger">Delete account</Button>
       </Box>
-    </>
+      </Box>
+
+    </Box>
   )
 }

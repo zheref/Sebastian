@@ -1,3 +1,6 @@
+import { HeartFillIcon, InboxIcon, CalendarIcon, CloudIcon} from '@primer/octicons-react';
+import { Octicon } from '@primer/react';
+
 export enum CommandScreen {
   ClassifyGmail = 'classify-gmail',
   ClassifyOutlook = 'classify-outlook',
@@ -24,4 +27,17 @@ export function getAllScreens(): CommandScreen[] {
   return Object.values(CommandScreen).filter(
     (value) => typeof value === 'string'
   ) as CommandScreen[];
+}
+
+export function getOcticonFor(screen: CommandScreen): React.ComponentType<React.ComponentProps<typeof Octicon>> {
+  switch (screen) {
+    case CommandScreen.ClassifyGmail:
+      return InboxIcon;
+    case CommandScreen.ClassifyOutlook:
+      return CalendarIcon;
+    case CommandScreen.ClassifyICloud:
+      return CloudIcon;
+    default:
+      return HeartFillIcon;
+  }
 }
